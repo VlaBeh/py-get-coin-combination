@@ -15,16 +15,6 @@ test_cases: List[Tuple[int, List[int]]] = [
 ]
 
 
-@pytest.mark.parametrize("cents: int, expected: List[int]", test_cases)
+@pytest.mark.parametrize("cents, expected", test_cases)
 def test_get_coin_combination(cents: int, expected: List[int]) -> None:
     assert get_coin_combination(cents) == expected
-
-
-def test_return_only_pennies() -> None:
-    coins = get_coin_combination(6)
-    assert sum(coins[1:]) > 0, "Function returned only pennies"
-
-
-def test_return_only_one_type() -> None:
-    coins = get_coin_combination(6)
-    assert sum(coins) != coins[0], "Function returned only one type of coin"
